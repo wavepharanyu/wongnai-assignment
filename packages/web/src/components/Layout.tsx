@@ -37,7 +37,7 @@ const Layout = ({children}:Props) => {
   if(restaurantData){
     return (
       <div>
-          <Header name={restaurantData.name}/>
+          <Header name={restaurantData.name} open={restaurantData.activeTimePeriod.open} close={restaurantData.activeTimePeriod.close}/>
               {children}
           <Footer open={restaurantData.activeTimePeriod.open} close={restaurantData.activeTimePeriod.close}/>
       </div>

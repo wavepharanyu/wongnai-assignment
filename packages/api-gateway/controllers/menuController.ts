@@ -26,7 +26,7 @@ interface MenuDataResponse {
     totalInStock: number
 }
 
-export async function getMenuShortData (req:Request, res:Response)  {
+export async function getMenuListData (req:Request, res:Response)  {
     const { id, category } = req.params
     try{
         let restaurantData = await axios.get<RestauantDataResponse>(`https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api/restaurants/${id}.json`)

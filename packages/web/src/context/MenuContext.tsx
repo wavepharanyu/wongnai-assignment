@@ -5,7 +5,7 @@ import axios from "axios";
 interface MenuContextType {
     fullMenu?: FullMenuType[],
     menuDetail?: FullMenuType,
-    fetchFullMenu: (id: string, category: string) => void,
+    fetchMenuList: (id: string, category: string) => void,
     fetchMenuDetail: (id: string, menu: string) => void,
     sortMenu: (fullMenu: FullMenuType[], choice: string) => void,
     isFetchingMenu: boolean,
@@ -36,9 +36,23 @@ interface FullMenuType {
     }[]
 }
 
+interface ShortMenuType {
+    name: string
+    id: string
+    thumbnailImage?: string
+    fullPrice: number
+    discountedPercent: number
+    discountedTimePeriod?: {
+       begin: string
+       end: string
+     }
+    sold: number
+    totalInStock: number
+}
+
 const initState = {
     isFetchingMenu: false,
-    fetchFullMenu: () => {},
+    fetchMenuList: () => {},
     fetchMenuDetail: () => {},
     sortMenu: () => {}
 }
@@ -52,7 +66,7 @@ export const MyMenuContext = () =>{
 const MenuProvider = ({children} : Props) => {
     const [state,dispatch] = useReducer(MenuReducer,initState)
     
-    const fetchFullMenu = async(id: string, category: string) => {
+    const fetchMenuList = async(id: string, category: string) => {
         dispatch({type:"FETCH_DATA_REQUEST"})
         let res = await axios.get(`http://localhost:3001/api/restaurant/${id}/${category}/menu/short`)
         dispatch({type:"FETCH_DATA_SUCCESS",payload: res.data})
@@ -71,18 +85,18 @@ const MenuProvider = ({children} : Props) => {
             menuSort =  fullMenu.sort((a, b) => a.sold - b.sold).reverse();
         }
         else if(choice === "priceDesc"){
-            menuSort =  fullMenu.sort((a, b) => a.fullPrice - b.fullPrice).reverse();
+            menuSort =  fullMenu.sort((a, b) => (a.discountedPercent ? (a.fullPrice*a.discountedPercent) :a.fullPrice ) - (b.discountedPercent ? (b.fullPrice*b.discountedPercent) :b.fullPrice )).reverse();
 
         }
         else if(choice === "priceAsc"){
-            menuSort =  fullMenu.sort((a, b) => a.fullPrice - b.fullPrice);
+            menuSort =  fullMenu.sort((a, b) => (a.discountedPercent ? (a.fullPrice*a.discountedPercent) :a.fullPrice ) - (b.discountedPercent ? (b.fullPrice*b.discountedPercent) :b.fullPrice ));
 
         }
         dispatch({type:"SORT_DATA",payload: menuSort})
     }
 
     return(
-        <MenuContext.Provider value={{...state,fetchFullMenu,fetchMenuDetail,sortMenu}}>
+        <MenuContext.Provider value={{...state,fetchMenuList,fetchMenuDetail,sortMenu}}>
             {children}
         </MenuContext.Provider>
     )

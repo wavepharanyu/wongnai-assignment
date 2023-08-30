@@ -33,7 +33,7 @@ interface FullMenuType {
 
 interface MenuContextType {
     fullMenu?: FullMenuType[],
-    fetchFullMenu: (id: string, category: string) => void,
+    fetchMenuList: (id: string, category: string) => void,
     isFetchingMenu: boolean,
     sortMenu: (fullMenu: FullMenuType[], choice: string) => void,
 }

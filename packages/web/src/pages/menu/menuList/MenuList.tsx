@@ -13,7 +13,7 @@ import Loading from '../../../components/Loading/Loading';
 
 interface MenuContextType {
     fullMenu?: FullMenuType[],
-    fetchFullMenu: (id: string, category: string) => void,
+    fetchMenuList: (id: string, category: string) => void,
     isFetchingMenu: boolean,
     sortMenu: (fullMenu: FullMenuType[], choice: string) => void,
 }
@@ -50,21 +50,21 @@ const Menu = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [checked, setChecked] = useState(false)
 
-    const { fullMenu, fetchFullMenu, isFetchingMenu }:MenuContextType  = MyMenuContext() 
+    const { fullMenu, fetchMenuList, isFetchingMenu }:MenuContextType  = MyMenuContext() 
   
     useEffect(()=>{
 
         if(category === "promotion"){
             setTitle('Promotions')
-            fetchFullMenu('227018', category)
+            fetchMenuList('227018', category)
         }
         else if(category === "set"){
             setTitle('Set & Duo')
-            fetchFullMenu('227018', category)
+            fetchMenuList('227018', category)
         }
         else if(category === "food"){
             setTitle('Foods & Beverages')
-            fetchFullMenu('227018', category)
+            fetchMenuList('227018', category)
         }
         else{
             navigate('/404')

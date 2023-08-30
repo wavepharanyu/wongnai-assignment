@@ -5,16 +5,19 @@
     position: absolute;
     width: 100%;
     border-radius: 1rem 1rem 0rem 0rem;
-    top: 0;
-    padding: 0.3rem 0;
+    top: 0%;
+    padding: 0rem 0;
     .text{
         font-size: 1rem;
         margin: 0;
         @include xs{
-            font-size: 0.8rem;
+            font-size: 1rem;
         }
         @include sm{
-            font-size: 1.2rem;
+            font-size: 0.8rem;
+        }
+        @include lg{
+            font-size: 0.9rem;
         }
     }
 }

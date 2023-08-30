@@ -46,12 +46,14 @@ const MenuItem = ({menu, checked} : MyComponentProps ) => {
   return (
     <div className='menuitem-container'>
     <Link to={`/menu/${menu.id}`} className='menuitem-link'>
-        <img className='image' src={`${menu.largeImage !== undefined ? menu.largeImage : '/images/cutlery.png'}`}/>
+        <img className='image' src={`${menu.thumbnailImage !== undefined ? menu.thumbnailImage : '/images/cutlery.png'}`}/>
         <div className='menuitem-detail'>
         <p className='name'>{menu.name}</p>
         <div className='menuitem-price'>
             { !checked && <p className={`${(diffPeriod > 0 && menu.discountedPercent > 0 && isInPeriod)  ? 'price-line' : 'price'}`}>฿ {menu.fullPrice}</p>}
             { !checked && diffPeriod > 0 && menu.discountedPercent > 0 && isInPeriod && <p className='discount'>฿ {(menu.fullPrice*(100-menu.discountedPercent))/100}</p>}
+            {/* { <p className='discount'>฿ {(menu.fullPrice*(100-menu.discountedPercent))/100}</p>}           */}
+
 
             {/* Mock Up Discount */}
             { checked && <p className={`${(isInPeriod)  ? 'price-line' : 'price'}`}>฿ {menu.fullPrice}</p>}

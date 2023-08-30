@@ -1,0 +1,12 @@
+@import "../../../static/root";
+
+.loading-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 82vh;
+    h1{
+        font-size: 3rem;
+    }
+}

@@ -1,0 +1,46 @@
+@import "../../../../static/root";
+
+.menu-wrapper{
+    min-height: 79vh;
+    margin-bottom: 2rem;
+    .menu-container{
+        margin: 2rem;
+        .menu-header{
+            display: grid;
+            align-items: center;
+            grid-template-columns: 10% 80%; 
+    
+            .menu-title{
+                text-align: center;
+            }
+    
+            .link-button{
+                text-decoration: none;
+                align-self: center;
+                padding-bottom: 0.75rem;
+                .back-button{
+                    @include button(black, transparent, transparent);
+                    padding: 0 2rem;
+                    .image-button{
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+        .menu-search{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            @include sm{
+                flex-direction: row;
+            }
+            .sort-button{
+                padding: 0.5em 1rem;
+            }
+        }
+    
+    }
+}

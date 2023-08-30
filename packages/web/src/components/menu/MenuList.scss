@@ -1,0 +1,31 @@
+@import "../../../static/root";
+
+.menulist-container{
+    margin-top: 2rem;
+    .menulist-title{
+        text-align: center;
+    }
+    .menulist-list{
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr;
+        align-self: center;
+        text-align: center;
+        @include xs{
+            grid-template-columns: repeat(2,1fr);
+        }
+        @include sm{
+            grid-template-columns: repeat(2,1fr);
+            gap: 40px;
+        }
+        @include lg{
+            grid-template-columns: repeat(3,1fr);
+        }
+        @include xl{
+            grid-template-columns: repeat(4,1fr);
+        }
+        @include xxl{
+            grid-template-columns: repeat(5,1fr);
+        }
+    }
+}    

@@ -1,0 +1,102 @@
+@import "../../../../static/root";
+
+.menuitem-container{
+    border-radius: 1rem;
+    box-shadow: 2px 0px 2px 2px rgba(0,0,0,.2);
+    border: 2px solid black;
+    position: relative;
+    display: block;
+    .menuitem-link{
+        text-decoration: none;
+        color: black;
+        .image{
+            width: 100%;
+            height: 200px;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            @include xs{
+                height: 150px;
+            }
+            @include sm{
+                height: 250px;
+            }
+            @include md{
+                height: 350px;
+            }
+        }
+    
+        .menuitem-detail{
+            padding-top: 0.8rem;
+            border-radius: 0rem 0rem 1rem 1rem;
+            background-color: #eae0d5;
+            .name{
+                padding: 0 0.5rem;
+                font-size: 1.2rem;
+                height: 50px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include xs{
+                    font-size: 0.9rem;
+                    height: 70px;
+                }
+                @include sm{
+                    font-size: 1.3rem;
+                }
+            }
+            .menuitem-price{
+                display: flex;
+                justify-content: center;
+                .price{
+                    font-size: 1.3rem;
+                    @include xs{
+                        font-size: 1.3rem;
+                    }
+                    @include sm{
+                        font-size: 1.7rem;
+                    }
+                }
+    
+                .price-line{
+                    font-size: 1.3rem;
+                    @include xs{
+                        font-size: 1.3rem;
+                    }
+                    @include sm{
+                        font-size: 1.7rem;
+                    }
+                    text-decoration: line-through; 
+                }
+                
+                .discount{
+                    margin-left: 1rem;
+                    font-size: 1.3rem;
+                    @include xs{
+                        font-size: 1.3rem;
+                    }
+                    @include sm{
+                        font-size: 1.7rem;
+                    }
+                    color: red;
+                }
+            }
+    
+            .menuitem-stock{
+                padding: 0 1rem;
+                display: flex;
+                justify-content: space-between;
+    
+                .text{
+                    color: #6c757d;
+                    @include xs{
+                        font-size: 0.8rem;
+                    }
+                    @include sm{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }   
+    }
+}

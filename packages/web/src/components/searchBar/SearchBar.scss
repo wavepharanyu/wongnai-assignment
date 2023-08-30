@@ -1,0 +1,12 @@
+@import "../../../static/root";
+
+
+.search-input{
+        width: 60%;
+        border-radius: 0.5rem;
+        padding: 0.5em 1rem;
+
+        @include xxl{
+            width: 25%;
+        }
+    }

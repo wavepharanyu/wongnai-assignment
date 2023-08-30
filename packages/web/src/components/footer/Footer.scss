@@ -1,0 +1,27 @@
+@import "../../../static/root";
+
+.footer-container{
+    background-color: #b08968;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    .footer-image{
+        margin-right: 0.7rem;
+        .image{
+            width: 30px;
+            height: 30px;
+        }
+    }
+    .footer-detail{
+        .text{
+            color: white;
+            margin: 0;
+            font-weight: 500;
+            font-family: 'Prompt-Medium';
+            @include sm{
+                font-size: 1.2rem;
+            }
+        }
+    }
+}

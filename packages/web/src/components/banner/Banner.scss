@@ -1,0 +1,58 @@
+@import "../../../static/root";
+
+
+.banner-title{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    font-family: fantasy;
+    @include sm{
+        font-size: 2rem;
+    }
+    @include md{
+        font-size: 3rem;
+    }
+    @include lg{
+        font-size: 4rem;
+    }
+}
+
+.banner-detail{
+    font-size: 1rem;
+    font-weight: 200;
+    font-family: fantasy;
+    @include sm{
+        font-size: 1.5rem;
+    }
+    @include md{
+        font-size: 2rem;
+    }
+    @include lg{
+        font-size: 2.5rem;
+    }
+}
+
+.banner-link{
+    text-decoration: none;
+    .banner-button{
+        @include button(black, transparent, black);
+        border-radius: 0;
+        padding: 0.5rem 2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+        font-family: fantasy;
+        font-size: 0.7rem;
+        @include sm{
+            font-size: 1.3rem;
+        }
+        @include md{
+            font-size: 1.3rem;
+        }
+        @include lg{
+            font-size: 1.3rem;
+        }
+    }
+    .banner-button:hover, .banner-button:active{
+       background-color: #cdcdcd;
+    }
+}

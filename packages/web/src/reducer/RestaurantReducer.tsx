@@ -22,14 +22,15 @@ interface RestaurantType {
 
 
 const RestaurantReducer = (state: RestaurantState,action: RestaurantAction) => {
-    if(action.type === "FETCH_DATA_REQUEST"){
-        return { ...state, isFetching:true }
-    }
-    if(action.type === "FETCH_DATA_SUCCESS"){
-        return { restaurantData: action.payload, isFetching:false }
-    }
-    else{
-        return state
+    switch(action.type){
+        case "FETCH_DATA_REQUEST":
+            return { ...state, isFetching:true }
+
+        case "FETCH_DATA_SUCCESS":
+            return { restaurantData: action.payload, isFetching:false }
+
+        default:
+            return state
     }
 }
 

@@ -85,11 +85,11 @@ const MenuProvider = ({children} : Props) => {
             menuSort =  fullMenu.sort((a, b) => a.sold - b.sold).reverse();
         }
         else if(choice === "priceDesc"){
-            menuSort =  fullMenu.sort((a, b) => (a.discountedPercent ? (a.fullPrice*a.discountedPercent) :a.fullPrice ) - (b.discountedPercent ? (b.fullPrice*b.discountedPercent) :b.fullPrice )).reverse();
+            menuSort =  fullMenu.sort((a, b) => (a.discountedPercent ? (a.fullPrice*(100-a.discountedPercent)) :a.fullPrice ) - (b.discountedPercent ? (b.fullPrice*(100-b.discountedPercent)) :b.fullPrice )).reverse();
 
         }
         else if(choice === "priceAsc"){
-            menuSort =  fullMenu.sort((a, b) => (a.discountedPercent ? (a.fullPrice*a.discountedPercent) :a.fullPrice ) - (b.discountedPercent ? (b.fullPrice*b.discountedPercent) :b.fullPrice ));
+            menuSort =  fullMenu.sort((a, b) => (a.discountedPercent ? (a.fullPrice*(100-a.discountedPercent)) :a.fullPrice ) - (b.discountedPercent ? (b.fullPrice*(100-b.discountedPercent)) :b.fullPrice ));
 
         }
         dispatch({type:"SORT_DATA",payload: menuSort})

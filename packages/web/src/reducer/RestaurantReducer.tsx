@@ -1,24 +1,12 @@
 interface RestaurantState {
-    restaurantData?: RestaurantType
+    restaurantData?: ImportRestaurantType
     isFetching: boolean,
 }
 
 interface RestaurantAction {
-    payload?: RestaurantType,
+    payload?: ImportRestaurantType,
     type: string
 }
-
-interface RestaurantType {
-    name: string
-    id: number
-    coverImage: string
-    menus: string[]
-    activeTimePeriod: {
-       open: string
-       close: string
-     }
-}
-
 
 
 const RestaurantReducer = (state: RestaurantState,action: RestaurantAction) => {

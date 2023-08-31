@@ -8,30 +8,13 @@ interface Props  {
     children?: React.ReactNode
 };
 
-interface RestaurantContextType {
-  restaurantData?: RestaurantType,
-  fetchRestaurantData: (id: string) => void,
-  isFetching: boolean,
-}
-
-interface RestaurantType {
-  name: string
-  id: number
-  coverImage: string
-  menus: string[]
-  activeTimePeriod: {
-     open: string
-     close: string
-   }
-}
-
 
 const Layout = ({children}:Props) => {
-  const { restaurantData, fetchRestaurantData, isFetching }:RestaurantContextType  = MyRestaurantContext() 
+  const { restaurantData, fetchRestaurantData, isFetching }:ImportRestaurantContextType  = MyRestaurantContext() 
 
 
   useEffect(()=>{
-    fetchRestaurantData('227018')
+    fetchRestaurantData(import.meta.env.VITE_RESTAURANT_ID)
   },[])
 
   if(restaurantData){

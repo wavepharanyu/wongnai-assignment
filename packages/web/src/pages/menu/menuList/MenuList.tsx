@@ -11,60 +11,29 @@ import { MyMenuContext } from '../../../context/MenuContext';
 import Loading from '../../../components/Loading/Loading';
 
 
-interface MenuContextType {
-    fullMenu?: FullMenuType[],
-    fetchMenuList: (id: string, category: string) => void,
-    isFetchingMenu: boolean,
-    sortMenu: (fullMenu: FullMenuType[], choice: string) => void,
-}
-
-
-interface FullMenuType {
-    name: string
-    id: string
-    thumbnailImage?: string
-    fullPrice: number
-    discountedPercent: number
-    discountedTimePeriod?: {
-       begin: string
-       end: string
-     }
-    sold: number
-    totalInStock: number,
-    largeImage: string,
-    options: {
-      label: string
-      choices: {
-        label: string
-      }[]
-    }[]
-}
-
 const Menu = () => {
     let { category } = useParams();
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [word, setWord] = useState<string>("")
 
-    const [menus, setMenu] = useState<FullMenuType[]>([])
-    const [isLoading, setIsLoading] = useState(true)
     const [checked, setChecked] = useState(false)
 
-    const { fullMenu, fetchMenuList, isFetchingMenu }:MenuContextType  = MyMenuContext() 
+    const { fullMenu, fetchMenuList, isFetchingMenu }:ImportMenuContextType  = MyMenuContext() 
   
     useEffect(()=>{
 
         if(category === "promotion"){
             setTitle('Promotions')
-            fetchMenuList('227018', category)
+            fetchMenuList(import.meta.env.VITE_RESTAURANT_ID, category)
         }
         else if(category === "set"){
             setTitle('Set & Duo')
-            fetchMenuList('227018', category)
+            fetchMenuList(import.meta.env.VITE_RESTAURANT_ID, category)
         }
         else if(category === "food"){
             setTitle('Foods & Beverages')
-            fetchMenuList('227018', category)
+            fetchMenuList(import.meta.env.VITE_RESTAURANT_ID, category)
         }
         else{
             navigate('/404')
@@ -105,7 +74,7 @@ const Menu = () => {
                                 label={`${checked ? 'ปิด Mock Up Discount': 'เปิด Mock Up Discount'}`}
                         />
                     }
-                    <MenuList categoryName={title} menus={searchMenus} isLoading={isLoading} checked={checked}/>
+                    <MenuList categoryName={title} menus={searchMenus} checked={checked}/>
                 </div>
             </div>
         </Layout>

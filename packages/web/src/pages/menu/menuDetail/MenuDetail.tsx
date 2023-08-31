@@ -6,44 +6,17 @@ import { MyMenuContext } from '../../../context/MenuContext';
 import Loading from '../../../components/Loading/Loading';
 import './MenuDetail.scss'
 
-interface MenuContextType {
-    menuDetail?: FullMenuType,
-    fetchMenuDetail: (id: string, menuDetail: string) => void,
-    isFetchingMenu: boolean,
-}
-
-
-interface FullMenuType {
-    name: string
-    id: string
-    thumbnailImage?: string
-    fullPrice: number
-    discountedPercent: number
-    discountedTimePeriod?: {
-       begin: string
-       end: string
-     }
-    sold: number
-    totalInStock: number,
-    largeImage: string,
-    options: {
-      label: string
-      choices: {
-        label: string
-      }[]
-    }[]
-}
 
 const MenuDetail = () => {
     let { id } = useParams();
     const navigate = useNavigate();
 
-    const { menuDetail, fetchMenuDetail, isFetchingMenu }:MenuContextType  = MyMenuContext() 
+    const { menuDetail, fetchMenuDetail, isFetchingMenu }:ImportMenuContextType  = MyMenuContext() 
 
     useEffect(()=>{
 
         if(id){
-            fetchMenuDetail('227018',id)
+            fetchMenuDetail(import.meta.env.VITE_RESTAURANT_ID,id)
         }
     },[])
 

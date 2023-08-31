@@ -2,15 +2,6 @@ import { createContext, useContext, useReducer, ReactNode  } from "react";
 import MenuReducer from "../reducer/MenuReducer";
 import axios from "axios";
 
-interface MenuContextType {
-    fullMenu?: FullMenuType[],
-    menuDetail?: FullMenuType,
-    fetchMenuList: (id: string, category: string) => void,
-    fetchMenuDetail: (id: string, menu: string) => void,
-    sortMenu: (fullMenu: FullMenuType[], choice: string) => void,
-    isFetchingMenu: boolean,
-}
-
 interface Props {
     children?: ReactNode
 }
@@ -57,7 +48,7 @@ const initState = {
     sortMenu: () => {}
 }
 
-const MenuContext = createContext<MenuContextType>(initState)
+const MenuContext = createContext<ImportMenuContextType>(initState)
 
 export const MyMenuContext = () =>{
     return useContext(MenuContext)
@@ -78,7 +69,7 @@ const MenuProvider = ({children} : Props) => {
         dispatch({type:"FETCH_DETAIL_SUCCESS",payload: res.data})
     }
 
-    const sortMenu = (fullMenu: FullMenuType[], choice: string) => {
+    const sortMenu = (fullMenu: ImportShortMenuType[], choice: string) => {
         let menuSort
 
         if(choice === "bestSell"){

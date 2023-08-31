@@ -7,36 +7,9 @@ import { MyMenuContext } from '../../context/MenuContext';
 import './SortSelection.scss'
 
 interface MyComponentProps { 
-    menus : FullMenuType[]
+    menus : ImportShortMenuType[]
 }
 
-interface FullMenuType {
-    name: string
-    id: string
-    thumbnailImage?: string
-    fullPrice: number
-    discountedPercent: number
-    discountedTimePeriod?: {
-       begin: string
-       end: string
-     }
-    sold: number
-    totalInStock: number,
-    largeImage: string,
-    options: {
-      label: string
-      choices: {
-        label: string
-      }[]
-    }[]
-}
-
-interface MenuContextType {
-    fullMenu?: FullMenuType[],
-    fetchMenuList: (id: string, category: string) => void,
-    isFetchingMenu: boolean,
-    sortMenu: (fullMenu: FullMenuType[], choice: string) => void,
-}
 
 const SortSelection = ({ menus }:MyComponentProps) => {
     const [sort, setSort] = React.useState('');
@@ -44,7 +17,7 @@ const SortSelection = ({ menus }:MyComponentProps) => {
         setSort(event.target.value);
     };
   
-    const { sortMenu }:MenuContextType  = MyMenuContext() 
+    const { sortMenu }:ImportMenuContextType  = MyMenuContext() 
 
     useEffect(()=>{
         if(sort){

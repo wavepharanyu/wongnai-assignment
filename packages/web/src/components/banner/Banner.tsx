@@ -5,27 +5,9 @@ import './Banner.scss'
 import { MyRestaurantContext } from "../../context/RestaurantContext"
 import Loading from "../../components/Loading/Loading"
 
-interface RestaurantContextType {
-  restaurantData?: RestaurantType,
-  fetchRestaurantData: (id: string) => void,
-  isFetching: boolean,
-}
-
-interface RestaurantType  {
-  name: string
-  id: number
-  coverImage: string
-  menus: string[]
-  activeTimePeriod: {
-     open: string
-     close: string
-   }
-}
-
-
 
 const Banner = () => {
-  const { restaurantData, fetchRestaurantData, isFetching }:RestaurantContextType  = MyRestaurantContext() 
+  const { restaurantData, fetchRestaurantData, isFetching }:ImportRestaurantContextType  = MyRestaurantContext() 
 
   const Container = styled.div<{ coverImage: string }>`
   background-image: url(${(props) => props.coverImage});
@@ -43,7 +25,7 @@ const Banner = () => {
 
   useEffect(()=>{
 
-    fetchRestaurantData('227018')
+    fetchRestaurantData(import.meta.env.VITE_RESTAURANT_ID)
     
   },[])
   if(!isFetching && restaurantData){

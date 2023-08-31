@@ -2,27 +2,10 @@ import { createContext, useContext, useReducer, ReactNode  } from "react";
 import RestaurantReducer from "../reducer/RestaurantReducer";
 import axios from "axios";
 
-interface RestaurantContextType {
-    restaurantData?: RestaurantType,
-    fetchRestaurantData: (id: string) => void,
-    isFetching: boolean,
-}
-
 interface Props {
     children?: ReactNode
 }
 
-
-interface RestaurantType {
-    name: string
-    id: number
-    coverImage: string
-    menus: string[]
-    activeTimePeriod: {
-       open: string
-       close: string
-     }
-}
 
 const initState = {
     isFetching: false,
@@ -30,7 +13,7 @@ const initState = {
     
 }
 
-const RestaurantContext = createContext<RestaurantContextType>(initState)
+const RestaurantContext = createContext<ImportRestaurantContextType>(initState)
 
 export const MyRestaurantContext = () =>{
     return useContext(RestaurantContext)

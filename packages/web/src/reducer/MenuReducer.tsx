@@ -1,41 +1,16 @@
 interface MenuState {
-    fullMenu?: FullMenuType[],
-    menuDetail?: FullMenuType,
+    fullMenu?: ImportShortMenuType[],
+    menuDetail?: ImportFullMenuType,
     isFetchingMenu: boolean,
 }
 
 type Action
-  = { type: "FETCH_DATA_SUCCESS"; payload?: FullMenuType[] }
-  | { type: "FETCH_DETAIL_SUCCESS"; payload?: FullMenuType }
+  = { type: "FETCH_DATA_SUCCESS"; payload?: ImportShortMenuType[] }
+  | { type: "FETCH_DETAIL_SUCCESS"; payload?: ImportFullMenuType }
   | { type: "FETCH_DATA_REQUEST";}
   | { type: "FETCH_DETAIL_REQUEST";}
-  | { type: "SORT_DATA";payload?: FullMenuType[]}
+  | { type: "SORT_DATA";payload?: ImportShortMenuType[]}
 
-interface MenuAction {
-    payload?: Action,
-    type: string
-}
-
-interface FullMenuType {
-    name: string
-    id: string
-    thumbnailImage?: string
-    fullPrice: number
-    discountedPercent: number
-    discountedTimePeriod?: {
-       begin: string
-       end: string
-     }
-    sold: number
-    totalInStock: number,
-    largeImage: string,
-    options: {
-      label: string
-      choices: {
-        label: string
-      }[]
-    }[]
-}
 
 const MenuReducer = (state: MenuState,action: Action) => {
     switch (action.type) {

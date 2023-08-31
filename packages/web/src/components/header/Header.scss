@@ -8,42 +8,111 @@
     margin: 0;
     padding: 0;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,.2);
-    .header-link{
-        text-decoration: none;
-        .header-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    @include sm{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .header-group{
+        .header-link{
+            text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 10vh;
+
             @include sm{
                 margin-left: 2rem;
                 justify-content: start;
             }
-        }
-    
-        .header-logo{
-            margin-right: 1rem;
-            .logo{
-                @include sm{
-                    height : 55px;
-                    width: 55px;
+
+            .header-logo{
+                margin-right: 1rem;
+                .logo{
+                    @include sm{
+                        height : 55px;
+                        width: 55px;
+                    }
+                    height : 30px;
+                    width: 30px;
                 }
-                height : 30px;
-                width: 30px;
+            }
+        
+            .header-name{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                .text{
+                    @include xs{
+                        font-size: 16px;
+                    }
+                    @include sm{
+                        font-size: 25px;
+                    }
+                    font-size: 12px;
+                    color: white;    
+                    margin: 0;      
+                }
+            }
+        } 
+    }
+
+    .header-open{
+        background-color: #70e000;
+        width: 15%;
+        margin-bottom: 0rem;
+        @include sm{
+            width: auto;
+            margin-right: 2rem;
+            margin-bottom: 0;
+            padding: 0.5rem 1rem;
+        }
+        @include md{
+            margin-right: 4rem;
+            padding: 0.5rem 3rem;
+        }
+        .text{
+            margin: 0;
+            text-align: center;
+            font-size: 1.2rem;
+            @include sm{
+                font-size: 1.2rem;
+            }
+            @include md{
+                font-size: 1.5rem;
             }
         }
-    
-        .header-name{
-            .text{
-                @include xs{
-                    font-size: 16px;
-                }
-                @include sm{
-                    font-size: 25px;
-                }
-                font-size: 12px;
-                color: white;    
-                margin: 0;      
+    }
+
+    .header-close{
+        background-color: #ef233c;
+        color: white;
+        width: 15%;
+        margin-bottom: 0rem;
+        @include sm{
+            width: auto;
+            margin-right: 2rem;
+            margin-bottom: 0;
+            padding: 0.5rem 1rem;
+        }
+        @include md{
+            margin-right: 4rem;
+            padding: 0.5rem 3rem;
+        }
+        .text{
+            margin: 0;
+            text-align: center;
+            font-size: 1.2rem;
+            @include sm{
+                font-size: 1.2rem;
+            }
+            @include md{
+                font-size: 1.5rem;
             }
         }
     }

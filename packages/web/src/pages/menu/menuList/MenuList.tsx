@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Layout from '../../../components/Layout'
+// import Layout from '../../../components/Layout'
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import MenuList from '../../../components/menu/MenuList';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -25,15 +25,16 @@ const Menu = () => {
 
         if(category === "promotion"){
             setTitle('Promotions')
-            fetchMenuList(import.meta.env.VITE_RESTAURANT_ID, category)
+            // fetchMenuList(import.meta.env.VITE_RESTAURANT_ID, category)
+            fetchMenuList('227018', category)
         }
         else if(category === "set"){
             setTitle('Set & Duo')
-            fetchMenuList(import.meta.env.VITE_RESTAURANT_ID, category)
+            fetchMenuList('227018', category)
         }
         else if(category === "food"){
             setTitle('Foods & Beverages')
-            fetchMenuList(import.meta.env.VITE_RESTAURANT_ID, category)
+            fetchMenuList('227018', category)
         }
         else{
             navigate('/404')
@@ -46,7 +47,6 @@ const Menu = () => {
         });
 
      return (
-        <Layout>
             <div className='menu-wrapper'>
                 <div className='menu-container'>
                     <div className='menu-header'>
@@ -74,17 +74,14 @@ const Menu = () => {
                                 label={`${checked ? 'ปิด Mock Up Discount': 'เปิด Mock Up Discount'}`}
                         />
                     }
-                    <MenuList categoryName={title} menus={searchMenus} checked={checked}/>
+                    <MenuList menus={searchMenus} checked={checked}/>
                 </div>
             </div>
-        </Layout>
     )
 }
     else{
         return(
-            <Layout>
                 <Loading />
-            </Layout>
         )
     }
 }

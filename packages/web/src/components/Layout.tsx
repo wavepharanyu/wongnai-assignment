@@ -3,31 +3,32 @@ import Footer from "./footer/Footer";
 import { useEffect } from "react"
 import { MyRestaurantContext } from "../context/RestaurantContext"
 import Loading from "../components/Loading/Loading"
-
-interface Props  {
-    children?: React.ReactNode
-};
+import React from "react"
+import { Outlet } from 'react-router-dom' 
 
 
-const Layout = ({children}:Props) => {
+const Layout = () => {
   const { restaurantData, fetchRestaurantData, isFetching }:ImportRestaurantContextType  = MyRestaurantContext() 
 
 
   useEffect(()=>{
-    fetchRestaurantData(import.meta.env.VITE_RESTAURANT_ID)
+    fetchRestaurantData("227018")
+    
   },[])
 
   if(restaurantData){
     return (
-      <div>
+        <React.Fragment>
           <Header name={restaurantData.name} open={restaurantData.activeTimePeriod.open} close={restaurantData.activeTimePeriod.close}/>
-              {children}
+              <Outlet/>
           <Footer open={restaurantData.activeTimePeriod.open} close={restaurantData.activeTimePeriod.close}/>
-      </div>
+        </React.Fragment>
     )
   }
   else{
-    return null
+    return (
+      <React.Fragment></React.Fragment>
+    )
   }
 
 }

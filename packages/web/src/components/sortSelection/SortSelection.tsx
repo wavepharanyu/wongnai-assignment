@@ -35,6 +35,7 @@ const SortSelection = ({ menus }:MyComponentProps) => {
                 value={sort}
                 label="เรียงตาม"
                 onChange={handleChange}
+                data-testid="select"
                 >
                 <MenuItem value="bestSell">ขายดีที่สุด</MenuItem>
                 <MenuItem value="priceDesc">ราคามาก-น้อย</MenuItem>

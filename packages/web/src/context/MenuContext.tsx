@@ -59,7 +59,7 @@ const MenuProvider = ({children} : Props) => {
     
     const fetchMenuList = async(id: string, category: string) => {
         dispatch({type:"FETCH_DATA_REQUEST"})
-        let res = await axios.get(`http://localhost:3001/api/restaurant/${id}/${category}/menu/short`)
+        let res = await axios.get(`http://localhost:3001/api/restaurant/${id}/${category}/menulist`)
         dispatch({type:"FETCH_DATA_SUCCESS",payload: res.data})
     }
 

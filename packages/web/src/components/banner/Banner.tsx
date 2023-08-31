@@ -25,7 +25,7 @@ const Banner = () => {
 
   useEffect(()=>{
 
-    fetchRestaurantData(import.meta.env.VITE_RESTAURANT_ID)
+    fetchRestaurantData("227018")
     
   },[])
   if(!isFetching && restaurantData){

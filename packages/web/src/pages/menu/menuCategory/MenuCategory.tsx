@@ -10,9 +10,9 @@ const categoryItems = [
 
 const MenuCategory = () => {
   return (
-    <Layout>
-      <div className="category-container">
-        <h1 className="category-title">เมนูอาหาร</h1>
+
+      <div className="category-container" >
+        <h1 className="category-title" data-testid='category-container'>เมนูอาหาร</h1>
         <div className="category-list">
           {categoryItems.map((item,index) => {
             return(
@@ -20,14 +20,14 @@ const MenuCategory = () => {
                   <img className="image" src={item.image} />
                   <div className="detail">
                     <h2 className="text">{item.name}</h2>
-                    <Link to={item.linkUrl} className="link"><button className="button">ดูเมนู</button></Link>
+                    <Link to={item.linkUrl} className="link"><button className="button" data-testid='category-button'>ดูเมนู</button></Link>
                   </div>
               </div>
             )
           })}
        </div>
       </div>
-    </Layout>
+
   )
 }
 

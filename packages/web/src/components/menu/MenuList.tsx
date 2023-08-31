@@ -4,20 +4,19 @@ import './MenuList.scss'
 
 
 interface MyComponentProps { 
-	categoryName: string ,
   checked: boolean,
   menus : ImportShortMenuType[],
+
 }
 
 
 const MenuList = ({checked,menus} : MyComponentProps) => {
-
     return (
       <div className='menulist-container'>
         <div className='menulist-list'>
           {menus.map((menu)=>{
             return(
-              <MenuItem menu={menu} checked={checked} key={menu.id}/>
+              <MenuItem menu={menu} checked={checked} key={menu.id} />
             )
           })}
         </div>

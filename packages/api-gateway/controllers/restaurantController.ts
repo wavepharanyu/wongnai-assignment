@@ -11,13 +11,17 @@ interface RestauantDataResponse {
        close: string
      }
    };
+
+export function getData(id :string){
+    return axios.get<RestauantDataResponse>(`https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api/restaurants/${id}.json`)
+}
   
 
 export async function getRestaurantData (req:Request, res:Response)  {
     const { id } = req.params
     let result
     try{
-        result = await axios.get<RestauantDataResponse>(`https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api/restaurants/${id}.json`)
+        result = await getData(id)
         res.status(200).json(result.data);
     }
 

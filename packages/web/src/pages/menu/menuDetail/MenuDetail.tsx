@@ -1,76 +1,43 @@
-import { useEffect, useState } from 'react'
-import { useNavigate , useParams } from 'react-router-dom'
-import Layout from '../../../components/Layout'
-import ButtonGroup from '../../../components/buttonGroup/ButtonGroup'
-import { MyMenuContext } from '../../../context/MenuContext';
-import Loading from '../../../components/Loading/Loading';
-import './MenuDetail.scss'
-
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import ButtonGroup from "../../../components/buttonGroup/ButtonGroup";
+import { MyMenuContext } from "../../../context/MenuContext";
+import Loading from "../../../components/Loading/Loading";
+import Detail from "../../../components/menu/menuDetail/Detail";
+import "./MenuDetail.scss";
 
 const MenuDetail = () => {
-    let { id } = useParams();
-    const navigate = useNavigate();
+  let { id } = useParams();
+  const navigate = useNavigate();
 
-    const { menuDetail, fetchMenuDetail, isFetchingMenu }:ImportMenuContextType  = MyMenuContext() 
+  const { menuDetail, fetchMenuDetail, isFetchingMenu }: ImportMenuContextType = MyMenuContext();
 
-    useEffect(()=>{
-
-        if(id){
-            fetchMenuDetail(import.meta.env.VITE_RESTAURANT_ID,id)
-        }
-    },[])
-
-    function handleGoBack() {
-        navigate(-1)
+  useEffect(() => {
+    if (id) {
+      fetchMenuDetail(import.meta.env.VITE_RESTAURANT_ID, id);
     }
+  }, []);
 
-    if(menuDetail && !isFetchingMenu){
+  function handleGoBack() {
+    navigate(-1);
+  }
 
-        return (
-            <Layout>
-                <div className='detail-wrapper'>
-                <button onClick={handleGoBack} className='back-button'><img className='image-button' src="/images/left-arrow.png"/></button>
-                    <div className='detail-container'>
-                        <div className='detail-image'>
-                            <img src={`${menuDetail.largeImage !== undefined ? menuDetail.largeImage : '/images/cutlery.png'}`} className='image'/>
-                        </div>
-                        <div className='detail-description'>
-                            <div className='detail-header'>
-                                <h1 className='name'>{menuDetail.name}</h1>
-                            </div>
-                            <div className='detail-body'>
-                                 {menuDetail.options.map((option, index) => {
-                                    return (
-                                        <div className="option-container" key={index}>
-                                            <p className='option-title'>{option.label}</p>
-                                            <ButtonGroup choices={option.choices} />
-                                        </div>
-                                    );
-                                })}
-                                
-                            </div>
-                            <div className='detail-footer'>
-                                <div className="stock-container">
-                                    <p className="stock-text">ขายไปแล้ว {menuDetail.sold} คงเหลือ {menuDetail.totalInStock}</p>
-                                </div>
-                                <div className='price-container'>
-                                    <h1 className={`${menuDetail.discountedPercent > 0 ? 'price-line' : 'price'}`}>{menuDetail.fullPrice} ฿ </h1>
-                                    {  menuDetail.discountedPercent > 0 && <p className='discount'>฿ {(menuDetail.fullPrice*(100-20))/100}</p>}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Layout>
-        )
-    }
-    else{
-        return(
-            <div>
-                <Loading/>
-            </div>
-        )
-    }
-}
+  if (menuDetail && !isFetchingMenu) {
+    return (
+      <div className="detail-wrapper">
+        <button onClick={handleGoBack} className="back-button">
+          <img className="image-button" src="/images/left-arrow.png" />
+        </button>
+        <Detail menuDetail={menuDetail} />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+  }
+};
 
-export default MenuDetail
+export default MenuDetail;

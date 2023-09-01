@@ -33,10 +33,29 @@ interface ImportFullMenuType {
     largeImage: string,
     options: {
       label: string
-      choices: {
+      choices: groupedChoice[]
+    }[],
+  }
+
+interface groupedChoice {
+    egg? :{
         label: string
-      }[]
-    }[]
+    }[],
+    spicy? :{
+        label: string
+    }[],
+    rice? :{
+        label: string
+    }[],
+    ice? :{
+        label: string
+    }[],
+    sweet? :{
+      label: string
+    }[],
+    other? :{
+      label: string
+    }[],
 }
 
 interface ImportShortMenuType {

@@ -24,7 +24,7 @@ const RestaurantProvider = ({children} : Props) => {
     
     const fetchRestaurantData = async(id: string) => {
         dispatch({type:"FETCH_DATA_REQUEST"})
-        let res = await axios.get(`http://localhost:3001/api/restaurant/${id}`)
+        let res = await axios.get(`http://localhost:3001/api/restaurants/${id}`)
         dispatch({type:"FETCH_DATA_SUCCESS",payload: res.data})
     }
 

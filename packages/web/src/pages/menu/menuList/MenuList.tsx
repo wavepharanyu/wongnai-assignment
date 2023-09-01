@@ -57,23 +57,25 @@ const Menu = () => {
                         <SearchBar word={word} setWord={setWord}/>
                         <SortSelection menus={searchMenus}/>
                     </div>
-                    {category === "promotion" &&
-                        <FormControlLabel
-                                sx={{
-                                    display: 'block',
-                                    textAlign: 'center'
-                                }}
-                                control={
-                                <Switch
-                                    checked={checked}
-                                    onChange={() => setChecked(!checked)}
-                                    name="mockupDiscount"
-                                    color="primary"
-                                />
-                                }
-                                label={`${checked ? 'ปิด Mock Up Discount': 'เปิด Mock Up Discount'}`}
-                        />
-                    }
+                    <div className='mockup-container'>
+                        {category === "promotion" &&
+                            <FormControlLabel
+                                    sx={{
+                                        //display: 'block',
+                                        textAlign: 'center'
+                                    }}
+                                    control={
+                                    <Switch
+                                        checked={checked}
+                                        onChange={() => setChecked(!checked)}
+                                        name="mockupDiscount"
+                                        color="primary"
+                                    />
+                                    }
+                                    label={`${checked ? 'ปิด Mock Up Discount': 'เปิด Mock Up Discount'}`}
+                            />
+                        }
+                    </div>
                     <MenuList menus={searchMenus} checked={checked}/>
                 </div>
             </div>

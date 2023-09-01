@@ -3,7 +3,7 @@ import { getRestaurantData } from "../controllers/restaurantController";
 const router = express.Router();
 
 
-router.get(`/restaurant/:id`, getRestaurantData)
+router.get(`/restaurants/:id`, getRestaurantData)
 
 
 export default router;

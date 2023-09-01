@@ -6,40 +6,6 @@ interface Props {
     children?: ReactNode
 }
 
-interface FullMenuType {
-    name: string
-    id: string
-    thumbnailImage?: string
-    fullPrice: number
-    discountedPercent: number
-    discountedTimePeriod?: {
-       begin: string
-       end: string
-     }
-    sold: number
-    totalInStock: number,
-    largeImage: string,
-    options: {
-      label: string
-      choices: {
-        label: string
-      }[]
-    }[]
-}
-
-interface ShortMenuType {
-    name: string
-    id: string
-    thumbnailImage?: string
-    fullPrice: number
-    discountedPercent: number
-    discountedTimePeriod?: {
-       begin: string
-       end: string
-     }
-    sold: number
-    totalInStock: number
-}
 
 const initState = {
     isFetchingMenu: false,
@@ -65,7 +31,7 @@ const MenuProvider = ({children} : Props) => {
 
     const fetchMenuDetail = async(id: string, menu: string) => {
         dispatch({type:"FETCH_DETAIL_REQUEST"})
-        let res = await axios.get(`https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api/restaurants/${id}/menus/${menu}/full.json`)
+        let res = await axios.get(`http://localhost:3001/api/restaurant/${id}/menu/${menu}`)
         dispatch({type:"FETCH_DETAIL_SUCCESS",payload: res.data})
     }
 

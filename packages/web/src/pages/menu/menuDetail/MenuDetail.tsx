@@ -23,6 +23,7 @@ const MenuDetail = () => {
   }
 
   if (menuDetail && !isFetchingMenu) {
+    console.log(menuDetail)
     return (
       <div className="detail-wrapper">
         <button onClick={handleGoBack} className="back-button">

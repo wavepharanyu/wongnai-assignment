@@ -2,7 +2,8 @@
 
 .detail-container{
     padding: 0 10rem;
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-bottom: 2rem;
     border-radius: 1rem;
@@ -15,14 +16,6 @@
     }
     @include md{
         padding: 0 8rem;
-    }
-    @include xl{
-        display: grid;
-        grid-template-columns: 40% 60%;
-        margin: 2rem 10rem;
-        width: 80%;
-        box-shadow: 4px 4px 4px 4px rgba(0,0,0,.2);
-        padding: 0;
     }
     .detail-image{
         align-self: center;
